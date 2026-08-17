@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git → GitHub — Guide du débutant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar__fill"></div>
+  </div>
+
+  <main class="slides" aria-live="polite">
+
+    <!-- 01 — COVER -->
+    <section class="slide slide--dark" data-slide="1">
+      <div class="slide__content slide__content--cover">
+        <span class="label">INTERACTIVE COURSE</span>
+        <h1 class="cover__title">GIT <span class="cover__arrow">→</span> GITHUB</h1>
+        <div class="cover__line"></div>
+        <p class="cover__subtitle">De ton ordinateur au cloud.</p>
+        <p class="cover__desc">Le guide du débutant pour versionner, sauvegarder et publier ses projets.</p>
+        <div class="cover__credit">
+          <span class="cover__credit-name">Stéphane Favide</span>
+          <span class="cover__credit-sep">—</span>
+          <span class="cover__credit-role">Product Builder</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 — QU'EST-CE QUE GIT ? -->
+    <section class="slide slide--light" data-slide="2">
+      <div class="slide__content">
+        <span class="slide__num">02</span>
+        <h2 class="slide__kicker">QU'EST-CE QUE GIT ?</h2>
+        <div class="split">
+          <div class="split__left">
+            <p class="text-lg">Git est un <strong>système de contrôle de version</strong>.</p>
+            <p class="text-muted">Il permet de garder l'historique de ton projet et de savoir ce qui a changé, quand et pourquoi.</p>
+          </div>
+          <div class="split__right">
+            <div class="timeline">
+              <div class="timeline__item"><span class="timeline__dot"></span>VERSION 01</div>
+              <div class="timeline__item"><span class="timeline__dot"></span>VERSION 02</div>
+              <div class="timeline__item"><span class="timeline__dot"></span>VERSION 03</div>
+              <div class="timeline__item"><span class="timeline__dot"></span>VERSION 04</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 — POURQUOI GIT ? -->
+    <section class="slide slide--dark" data-slide="3">
+      <div class="slide__content">
+        <span class="slide__num">03</span>
+        <h2 class="slide__kicker">POURQUOI GIT ?</h2>
+        <div class="comparison">
+          <div class="comparison__col comparison__col--bad">
+            <span class="comparison__label">SANS GIT</span>
+            <div class="file-list">
+              <span>projet-final.zip</span>
+              <span>projet-final-2.zip</span>
+              <span>projet-final-v2.zip</span>
+              <span>projet-vraiment-final.zip</span>
+              <span>projet-final-final-2.zip</span>
+            </div>
+          </div>
+          <div class="comparison__divider"></div>
+          <div class="comparison__col comparison__col--good">
+            <span class="comparison__label">AVEC GIT</span>
+            <div class="commit-list">
+              <span>commit <span class="muted">— version 1</span></span>
+              <span>commit <span class="muted">— version 2</span></span>
+              <span>commit <span class="muted">— version 3</span></span>
+              <span>commit <span class="muted">— version 4</span></span>
+            </div>
+          </div>
+        </div>
+        <p class="text-muted comparison__note">Git évite le chaos des multiples copies. Chaque modification est tracée proprement.</p>
+      </div>
+    </section>
+
+    <!-- 04 — GIT VS GITHUB -->
+    <section class="slide slide--light" data-slide="4">
+      <div class="slide__content">
+        <span class="slide__num">04</span>
+        <h2 class="slide__kicker">GIT VS GITHUB</h2>
+        <div class="vs-grid">
+          <div class="vs-card">
+            <h3 class="vs-card__title">Git</h3>
+            <p class="vs-card__text">Outil installé sur ton ordinateur. Il gère l'historique de ton code <strong>localement</strong>.</p>
+            <span class="vs-card__tag">LOCAL</span>
+          </div>
+          <div class="vs-card">
+            <h3 class="vs-card__title">GitHub</h3>
+            <p class="vs-card__text">Plateforme en ligne qui héberge des repositories Git et permet la collaboration.</p>
+            <span class="vs-card__tag">REMOTE</span>
+          </div>
+        </div>
+        <div class="vs-diagram">
+          <span>TON ORDINATEUR</span>
+          <span class="vs-diagram__arrow">→ Git →</span>
+          <span>REPOSITORY LOCAL</span>
+          <span class="vs-diagram__arrow">→ push →</span>
+          <span>GITHUB</span>
+        </div>
+        <p class="vs-note"><strong>Git ≠ GitHub</strong></p>
+      </div>
+    </section>
+
+    <!-- 05 — INSTALLER GIT -->
+    <section class="slide slide--dark" data-slide="5">
+      <div class="slide__content">
+        <span class="slide__num">05</span>
+        <h2 class="slide__kicker">INSTALLER GIT</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="step__num">1</span>
+            <p class="step__text">Télécharger Git depuis le site officiel : <span class="mono">git-scm.com</span></p>
+          </div>
+          <div class="step">
+            <span class="step__num">2</span>
+            <p class="step__text">Lancer l'installateur. Conserver les options recommandées.</p>
+          </div>
+          <div class="step">
+            <span class="step__num">3</span>
+            <p class="step__text">Git Bash sera installé — il permet d'utiliser les commandes Git dans un terminal.</p>
+          </div>
+        </div>
+        <div class="terminal-mock">
+          <div class="terminal-mock__bar"><span class="terminal-mock__dot"></span><span class="terminal-mock__dot"></span><span class="terminal-mock__dot"></span><span class="terminal-mock__title">Git Bash</span></div>
+          <div class="terminal-mock__body">
+            <span class="prompt">$</span> git --version
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 — VÉRIFIER L'INSTALLATION -->
+    <section class="slide slide--light" data-slide="6">
+      <div class="slide__content">
+        <span class="slide__num">06</span>
+        <h2 class="slide__kicker">VÉRIFIER L'INSTALLATION</h2>
+        <div class="code-block">
+          <code>git --version</code>
+          <button class="copy-btn" data-copy="git --version" aria-label="Copier la commande">COPY</button>
+        </div>
+        <div class="output-block">
+          <span class="output-block__label">RÉSULTAT</span>
+          <code>git version 2.47.0</code>
+        </div>
+        <div class="reveal">
+          <p class="reveal__question">Que faire si la commande n'est pas reconnue ?</p>
+          <button class="reveal__btn">Reveal answer</button>
+          <p class="reveal__answer" hidden>Git n'est pas installé ou n'a pas été ajouté au PATH. Relance l'installateur et vérifie les options.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 — CONFIGURER GIT -->
+    <section class="slide slide--dark" data-slide="7">
+      <div class="slide__content">
+        <span class="slide__num">07</span>
+        <h2 class="slide__kicker">CONFIGURER GIT</h2>
+        <p class="text-lg">Git associe chaque commit à un nom et une adresse email.</p>
+        <div class="code-block">
+          <code>git config --global user.name "Votre Nom"</code>
+          <button class="copy-btn" data-copy='git config --global user.name "Votre Nom"' aria-label="Copier">COPY</button>
+        </div>
+        <div class="code-block">
+          <code>git config --global user.email "votre@email.com"</code>
+          <button class="copy-btn" data-copy='git config --global user.email "votre@email.com"' aria-label="Copier">COPY</button>
+        </div>
+        <div class="code-block">
+          <code>git config --global --list</code>
+          <button class="copy-btn" data-copy="git config --global --list" aria-label="Copier">COPY</button>
+        </div>
+        <p class="text-muted">La commande <span class="mono">--list</span> permet de vérifier ta configuration.</p>
+      </div>
+    </section>
+
+    <!-- 08 — CRÉER UN PROJET -->
+    <section class="slide slide--light" data-slide="8">
+      <div class="slide__content">
+        <span class="slide__num">08</span>
+        <h2 class="slide__kicker">CRÉER SON PREMIER PROJET</h2>
+        <p class="text-lg">Git ne crée pas ton projet. Git vient gérer les versions de ton projet.</p>
+        <div class="file-tree">
+          <div class="file-tree__root">mon-premier-projet/</div>
+          <div class="file-tree__item">├── index.html</div>
+          <div class="file-tree__item">├── style.css</div>
+          <div class="file-tree__item">└── script.js</div>
+        </div>
+        <p class="text-muted">Crée un dossier, puis ajoute-y des fichiers. C'est ce dossier que Git va surveiller.</p>
+      </div>
+    </section>
+
+    <!-- 09 — OÙ SUIS-JE ? -->
+    <section class="slide slide--dark" data-slide="9">
+      <div class="slide__content">
+        <span class="slide__num">09</span>
+        <h2 class="slide__kicker">OÙ SUIS-JE ?</h2>
+        <p class="text-lg">Le terminal travaille toujours dans un dossier précis. C'est fondamental.</p>
+        <div class="code-block">
+          <code>pwd</code>
+          <button class="copy-btn" data-copy="pwd" aria-label="Copier">COPY</button>
+        </div>
+        <div class="output-block">
+          <span class="output-block__label">RÉSULTAT</span>
+          <code>~/Desktop/mon-premier-projet</code>
+        </div>
+        <div class="code-block">
+          <code>ls</code>
+          <button class="copy-btn" data-copy="ls" aria-label="Copier">COPY</button>
+        </div>
+        <div class="output-block">
+          <span class="output-block__label">RÉSULTAT</span>
+          <code>index.html &nbsp; style.css &nbsp; script.js</code>
+        </div>
+        <div class="callout">
+          <p>Avant d'utiliser Git, vérifie toujours que tu es dans le dossier racine de ton projet.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 — GIT INIT -->
+    <section class="slide slide--light" data-slide="10">
+      <div class="slide__content">
+        <span class="slide__num">10</span>
+        <h2 class="slide__kicker">INITIALISER GIT</h2>
+        <div class="big-code">git init</div>
+        <p class="text-lg">Cette commande transforme le dossier courant en <strong>repository Git local</strong>.</p>
+        <div class="before-after">
+          <div class="before-after__col">
+            <span class="before-after__label">AVANT</span>
+            <div class="file-tree">
+              <div class="file-tree__root">mon-projet/</div>
+              <div class="file-tree__item">├── index.html</div>
+              <div class="file-tree__item">└── style.css</div>
+            </div>
+          </div>
+          <div class="before-after__arrow">→</div>
+          <div class="before-after__col">
+            <span class="before-after__label">APRÈS</span>
+            <div class="file-tree">
+              <div class="file-tree__root">mon-projet/</div>
+              <div class="file-tree__item file-tree__item--highlight">├── .git/</div>
+              <div class="file-tree__item">├── index.html</div>
+              <div class="file-tree__item">└── style.css</div>
+            </div>
+          </div>
+        </div>
+        <p class="text-muted">Le dossier <span class="mono">.git</span> contient toutes les informations nécessaires à Git. Ne jamais le modifier manuellement.</p>
+      </div>
+    </section>
+
+    <!-- 11 — GIT STATUS -->
+    <section class="slide slide--dark" data-slide="11">
+      <div class="slide__content">
+        <span class="slide__num">11</span>
+        <h2 class="slide__kicker">GIT STATUS</h2>
+        <div class="code-block">
+          <code>git status</code>
+          <button class="copy-btn" data-copy="git status" aria-label="Copier">COPY</button>
+        </div>
+        <p class="text-lg"><span class="mono">git status</span> est l'une des commandes que tu utiliseras le plus.</p>
+        <div class="reveal">
+          <p class="reveal__question">Que montre git status ?</p>
+          <button class="reveal__btn">Reveal answer</button>
+          <p class="reveal__answer" hidden>Il montre ce qui a changé, quels fichiers sont nouveaux, quels fichiers sont prêts à être commités, et sur quelle branche tu te trouves.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 — FICHIERS NON SUIVIS -->
+    <section class="slide slide--light" data-slide="12">
+      <div class="slide__content">
+        <span class="slide__num">12</span>
+        <h2 class="slide__kicker">FICHIERS NON SUIVIS</h2>
+        <div class="output-block output-block--wide">
+          <span class="output-block__label">GIT STATUS</span>
+          <code>Untracked files:<br>&nbsp;&nbsp;index.html<br>&nbsp;&nbsp;style.css<br>&nbsp;&nbsp;script.js</code>
+        </div>
+        <p class="text-lg">Git voit les fichiers mais <strong>ne les suit pas encore</strong>.</p>
+        <div class="flow-diagram">
+          <span class="flow-box">FICHIERS DU PROJET</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-box">GIT</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-box flow-box--muted">NON SUIVIS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 — GIT ADD -->
+    <section class="slide slide--dark" data-slide="13">
+      <div class="slide__content">
+        <span class="slide__num">13</span>
+        <h2 class="slide__kicker">GIT ADD</h2>
+        <div class="big-code">git add .</div>
+        <p class="text-lg">Cette commande prépare les modifications pour le prochain commit.</p>
+        <div class="flow-diagram">
+          <span class="flow-box">WORKING DIRECTORY</span>
+          <span class="flow-arrow">→ git add →</span>
+          <span class="flow-box flow-box--active">STAGING AREA</span>
+        </div>
+        <p class="text-muted">Le <span class="mono">.</span> signifie : tous les fichiers et modifications du dossier courant concernés par Git.</p>
+        <div class="code-block">
+          <code>git add index.html</code>
+          <button class="copy-btn" data-copy="git add index.html" aria-label="Copier">COPY</button>
+        </div>
+        <p class="text-muted">Ou ajouter un fichier spécifique en nommant le fichier à la place du point.</p>
+      </div>
+    </section>
+
+    <!-- 14 — STAGING AREA -->
+    <section class="slide slide--light" data-slide="14">
+      <div class="slide__content">
+        <span class="slide__num">14</span>
+        <h2 class="slide__kicker">STAGING AREA</h2>
+        <p class="text-lg">La staging area est une <strong>zone intermédiaire</strong> entre tes fichiers et l'historique Git.</p>
+        <div class="pipeline">
+          <div class="pipeline__stage">
+            <span class="pipeline__label">WORKING<br>DIRECTORY</span>
+            <div class="pipeline__box"></div>
+          </div>
+          <div class="pipeline__connector">
+            <span class="pipeline__cmd">git add</span>
+            <span class="pipeline__arrow">→</span>
+          </div>
+          <div class="pipeline__stage">
+            <span class="pipeline__label">STAGING<br>AREA</span>
+            <div class="pipeline__box pipeline__box--active"></div>
+          </div>
+          <div class="pipeline__connector">
+            <span class="pipeline__cmd">git commit</span>
+            <span class="pipeline__arrow">→</span>
+          </div>
+          <div class="pipeline__stage">
+            <span class="pipeline__label">GIT<br>HISTORY</span>
+            <div class="pipeline__box"></div>
+          </div>
+        </div>
+        <p class="text-muted">Tu choisis ce que tu veux inclure dans le prochain commit. C'est un filet de sécurité intentionnel.</p>
+      </div>
+    </section>
+
+    <!-- 15 — GIT COMMIT -->
+    <section class="slide slide--dark" data-slide="15">
+      <div class="slide__content">
+        <span class="slide__num">15</span>
+        <h2 class="slide__kicker">GIT COMMIT</h2>
+        <p class="text-lg">Un commit enregistre officiellement une version de ton projet dans l'historique Git.</p>
+        <div class="code-block">
+          <code>git commit -m "Initial commit"</code>
+          <button class="copy-btn" data-copy='git commit -m "Initial commit"' aria-label="Copier">COPY</button>
+        </div>
+        <div class="commit-decompose">
+          <div class="commit-decompose__item">
+            <span class="mono">git commit</span>
+            <span class="commit-decompose__arrow">→</span>
+            <span>Créer une version</span>
+          </div>
+          <div class="commit-decompose__item">
+            <span class="mono">-m</span>
+            <span class="commit-decompose__arrow">→</span>
+            <span>Ajouter un message</span>
+          </div>
+        </div>
+        <div class="quiz" data-answer="B">
+          <p class="quiz__question">Que signifie le <span class="mono">-m</span> dans git commit -m ?</p>
+          <div class="quiz__options">
+            <button class="quiz__option" data-option="A">A — Modifier le commit</button>
+            <button class="quiz__option" data-option="B">B — Ajouter un message au commit</button>
+            <button class="quiz__option" data-option="C">C — Fusionner les branches</button>
+            <button class="quiz__option" data-option="D">D — Marquer le commit</button>
+          </div>
+          <div class="quiz__feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16 — L'HISTORIQUE -->
+    <section class="slide slide--light" data-slide="16">
+      <div class="slide__content">
+        <span class="slide__num">16</span>
+        <h2 class="slide__kicker">L'HISTORIQUE</h2>
+        <div class="code-block">
+          <code>git log --oneline</code>
+          <button class="copy-btn" data-copy="git log --oneline" aria-label="Copier">COPY</button>
+        </div>
+        <div class="history-list">
+          <div class="history-item">
+            <span class="history-item__hash">a82f31d</span>
+            <span class="history-item__msg">Update homepage</span>
+          </div>
+          <div class="history-item">
+            <span class="history-item__hash">f92a21c</span>
+            <span class="history-item__msg">Add navigation</span>
+          </div>
+          <div class="history-item">
+            <span class="history-item__hash">b73c11a</span>
+            <span class="history-item__msg">Initial commit</span>
+          </div>
+        </div>
+        <p class="text-muted">Chaque commit devient un point dans l'histoire du projet. Le plus récent apparaît en haut.</p>
+      </div>
+    </section>
+
+    <!-- 17 — CRÉER UN REPOSITORY GITHUB -->
+    <section class="slide slide--dark" data-slide="17">
+      <div class="slide__content">
+        <span class="slide__num">17</span>
+        <h2 class="slide__kicker">CRÉER UN REPOSITORY GITHUB</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="step__num">1</span>
+            <p class="step__text">Se connecter sur <span class="mono">github.com</span></p>
+          </div>
+          <div class="step">
+            <span class="step__num">2</span>
+            <p class="step__text">Cliquer sur <strong>New repository</strong></p>
+          </div>
+          <div class="step">
+            <span class="step__num">3</span>
+            <p class="step__text">Choisir un nom pour le repository</p>
+          </div>
+          <div class="step">
+            <span class="step__num">4</span>
+            <p class="step__text">Choisir <strong>Public</strong> ou <strong>Private</strong></p>
+          </div>
+          <div class="step">
+            <span class="step__num">5</span>
+            <p class="step__text">Cliquer sur <strong>Create repository</strong></p>
+          </div>
+        </div>
+        <div class="callout">
+          <p>Pour un premier projet existant localement, ne coche pas "Initialize with README". Tu vas connecter ton projet local existant.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 18 — CONNECTER LE LOCAL À GITHUB -->
+    <section class="slide slide--light" data-slide="18">
+      <div class="slide__content">
+        <span class="slide__num">18</span>
+        <h2 class="slide__kicker">CONNECTER LE LOCAL À GITHUB</h2>
+        <div class="code-block">
+          <code>git remote add origin URL_DU_REPOSITORY</code>
+          <button class="copy-btn" data-copy="git remote add origin URL_DU_REPOSITORY" aria-label="Copier">COPY</button>
+        </div>
+        <div class="definitions">
+          <div class="def">
+            <span class="def__term">remote</span>
+            <span class="def__desc">connexion vers un repository distant</span>
+          </div>
+          <div class="def">
+            <span class="def__term">origin</span>
+            <span class="def__desc">nom conventionnel donné à cette connexion</span>
+          </div>
+          <div class="def">
+            <span class="def__term">URL</span>
+            <span class="def__desc">adresse du repository GitHub</span>
+          </div>
+        </div>
+        <div class="flow-diagram">
+          <span class="flow-box">LOCAL REPOSITORY</span>
+          <span class="flow-arrow">→ origin →</span>
+          <span class="flow-box">GITHUB REPOSITORY</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 19 — VÉRIFIER LA CONNEXION -->
+    <section class="slide slide--dark" data-slide="19">
+      <div class="slide__content">
+        <span class="slide__num">19</span>
+        <h2 class="slide__kicker">VÉRIFIER LA CONNEXION</h2>
+        <div class="code-block">
+          <code>git remote -v</code>
+          <button class="copy-btn" data-copy="git remote -v" aria-label="Copier">COPY</button>
+        </div>
+        <div class="output-block">
+          <span class="output-block__label">RÉSULTAT</span>
+          <code>origin &nbsp;https://github.com/... (fetch)<br>origin &nbsp;https://github.com/... (push)</code>
+        </div>
+        <div class="definitions">
+          <div class="def">
+            <span class="def__term">fetch</span>
+            <span class="def__desc">récupérer les modifications distantes sans les fusionner</span>
+          </div>
+          <div class="def">
+            <span class="def__term">push</span>
+            <span class="def__desc">envoyer tes commits vers le repository distant</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 20 — PREMIER PUSH -->
+    <section class="slide slide--light" data-slide="20">
+      <div class="slide__content">
+        <span class="slide__num">20</span>
+        <h2 class="slide__kicker">PREMIER PUSH</h2>
+        <div class="big-code">git push -u origin main</div>
+        <p class="text-lg"><span class="mono">push</span> envoie les commits de ton repository local vers GitHub.</p>
+        <div class="push-decompose">
+          <div class="push-item">
+            <span class="mono">git push</span>
+            <span class="push-item__arrow">→</span>
+            <span>envoyer</span>
+          </div>
+          <div class="push-item">
+            <span class="mono">origin</span>
+            <span class="push-item__arrow">→</span>
+            <span>repository GitHub</span>
+          </div>
+          <div class="push-item">
+            <span class="mono">main</span>
+            <span class="push-item__arrow">→</span>
+            <span>branche principale</span>
+          </div>
+          <div class="push-item">
+            <span class="mono">-u</span>
+            <span class="push-item__arrow">→</span>
+            <span>suivi entre branche locale et distante</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 21 — PROJET SUR GITHUB -->
+    <section class="slide slide--dark" data-slide="21">
+      <div class="slide__content">
+        <span class="slide__num">21</span>
+        <h2 class="slide__kicker">PROJET SUR GITHUB</h2>
+        <div class="flow-diagram flow-diagram--success">
+          <span class="flow-box">LOCAL</span>
+          <span class="flow-arrow">→ PUSH →</span>
+          <span class="flow-box flow-box--active">GITHUB</span>
+        </div>
+        <div class="github-mock">
+          <div class="github-mock__header">
+            <span class="github-mock__repo">mon-premier-projet</span>
+            <span class="github-mock__badge">Public</span>
+          </div>
+          <div class="github-mock__files">
+            <span class="github-mock__file">index.html</span>
+            <span class="github-mock__file">style.css</span>
+            <span class="github-mock__file">script.js</span>
+            <span class="github-mock__file">README.md</span>
+          </div>
+        </div>
+        <p class="text-muted">Ton projet est maintenant en ligne et accessible depuis n'importe où.</p>
+      </div>
+    </section>
+
+    <!-- 22 — MODIFIER LE PROJET -->
+    <section class="slide slide--light" data-slide="22">
+      <div class="slide__content">
+        <span class="slide__num">22</span>
+        <h2 class="slide__kicker">MODIFIER LE PROJET</h2>
+        <p class="text-lg">Tu modifies <span class="mono">index.html</span> dans ton éditeur de code.</p>
+        <div class="code-block">
+          <code>git status</code>
+          <button class="copy-btn" data-copy="git status" aria-label="Copier">COPY</button>
+        </div>
+        <div class="output-block">
+          <span class="output-block__label">RÉSULTAT</span>
+          <code>modified: &nbsp;index.html</code>
+        </div>
+        <div class="code-block">
+          <code>git add .</code>
+          <button class="copy-btn" data-copy="git add ." aria-label="Copier">COPY</button>
+        </div>
+        <div class="code-block">
+          <code>git commit -m "Update homepage"</code>
+          <button class="copy-btn" data-copy='git commit -m "Update homepage"' aria-label="Copier">COPY</button>
+        </div>
+        <div class="code-block">
+          <code>git push</code>
+          <button class="copy-btn" data-copy="git push" aria-label="Copier">COPY</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 23 — WORKFLOW QUOTIDIEN -->
+    <section class="slide slide--dark" data-slide="23">
+      <div class="slide__content">
+        <span class="slide__num">23</span>
+        <h2 class="slide__kicker">WORKFLOW QUOTIDIEN</h2>
+        <div class="workflow">
+          <div class="workflow__step"><span class="workflow__num">1</span>JE TRAVAILLE</div>
+          <div class="workflow__step"><span class="workflow__num">2</span>JE SAUVEGARDE</div>
+          <div class="workflow__step workflow__step--cmd"><span class="workflow__num">3</span><span class="mono">git status</span></div>
+          <div class="workflow__step workflow__step--cmd"><span class="workflow__num">4</span><span class="mono">git add .</span></div>
+          <div class="workflow__step workflow__step--cmd"><span class="workflow__num">5</span><span class="mono">git commit -m "..."</span></div>
+          <div class="workflow__step workflow__step--cmd"><span class="workflow__num">6</span><span class="mono">git push</span></div>
+          <div class="workflow__step workflow__step--result"><span class="workflow__num">7</span>GITHUB EST À JOUR</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 24 — GIT PULL -->
+    <section class="slide slide--light" data-slide="24">
+      <div class="slide__content">
+        <span class="slide__num">24</span>
+        <h2 class="slide__kicker">GIT PULL</h2>
+        <p class="text-lg"><span class="mono">git pull</span> récupère les modifications depuis le repository distant et les intègre dans ton projet local.</p>
+        <div class="flow-diagram">
+          <span class="flow-box">GITHUB</span>
+          <span class="flow-arrow">→ pull →</span>
+          <span class="flow-box flow-box--active">TON ORDINATEUR</span>
+        </div>
+        <div class="code-block">
+          <code>git pull</code>
+          <button class="copy-btn" data-copy="git pull" aria-label="Copier">COPY</button>
+        </div>
+        <div class="callout">
+          <p>Utilise <span class="mono">git pull</span> quand : tu travailles sur plusieurs ordinateurs, tu travailles en équipe, ou des modifications ont été faites à distance.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 25 — GIT CLONE -->
+    <section class="slide slide--dark" data-slide="25">
+      <div class="slide__content">
+        <span class="slide__num">25</span>
+        <h2 class="slide__kicker">GIT CLONE</h2>
+        <p class="text-lg"><span class="mono">git clone</span> permet de récupérer un repository GitHub complet sur son ordinateur.</p>
+        <div class="code-block">
+          <code>git clone https://github.com/user/projet.git</code>
+          <button class="copy-btn" data-copy="git clone https://github.com/user/projet.git" aria-label="Copier">COPY</button>
+        </div>
+        <div class="code-block">
+          <code>cd projet</code>
+          <button class="copy-btn" data-copy="cd projet" aria-label="Copier">COPY</button>
+        </div>
+        <div class="flow-diagram">
+          <span class="flow-box">GITHUB</span>
+          <span class="flow-arrow">→ clone →</span>
+          <span class="flow-box flow-box--active">ORDINATEUR</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 26 — LES BRANCHES -->
+    <section class="slide slide--light" data-slide="26">
+      <div class="slide__content">
+        <span class="slide__num">26</span>
+        <h2 class="slide__kicker">LES BRANCHES</h2>
+        <p class="text-lg">Une branche permet de travailler sur une version parallèle du projet sans modifier directement la branche principale.</p>
+        <div class="branch-diagram">
+          <div class="branch-main">
+            <span class="branch-main__label">main</span>
+            <span class="branch-node"></span>
+            <span class="branch-line"></span>
+            <span class="branch-node"></span>
+            <span class="branch-line"></span>
+            <span class="branch-node"></span>
+          </div>
+          <div class="branch-feature">
+            <span class="branch-feature__label">feature</span>
+            <span class="branch-node branch-node--feat"></span>
+            <span class="branch-line branch-line--feat"></span>
+            <span class="branch-node branch-node--feat"></span>
+          </div>
+        </div>
+        <div class="code-block">
+          <code>git switch -c feature</code>
+          <button class="copy-btn" data-copy="git switch -c feature" aria-label="Copier">COPY</button>
+        </div>
+        <div class="code-block">
+          <code>git switch main</code>
+          <button class="copy-btn" data-copy="git switch main" aria-label="Copier">COPY</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 27 — ERREURS DE DÉBUTANT -->
+    <section class="slide slide--dark" data-slide="27">
+      <div class="slide__content">
+        <span class="slide__num">27</span>
+        <h2 class="slide__kicker">ERREURS DE DÉBUTANT</h2>
+        <div class="errors">
+          <div class="error-pair">
+            <div class="error-pair__bad"><span class="error-pair__label">ERREUR</span><code>git add.</code></div>
+            <div class="error-pair__good"><span class="error-pair__label">CORRECT</span><code>git add .</code></div>
+          </div>
+          <div class="error-pair">
+            <div class="error-pair__bad"><span class="error-pair__label">ERREUR</span><code>git bransh -M main</code></div>
+            <div class="error-pair__good"><span class="error-pair__label">CORRECT</span><code>git branch -M main</code></div>
+          </div>
+          <div class="error-pair">
+            <div class="error-pair__bad"><span class="error-pair__label">ERREUR</span><span>git init dans <span class="mono">C:/Users/Utilisateur</span></span></div>
+            <div class="error-pair__good"><span class="error-pair__label">CORRECT</span><span>git init dans <span class="mono">C:/Users/.../mon-projet</span></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 28 — LE PIÈGE -->
+    <section class="slide slide--light slide--warning" data-slide="28">
+      <div class="slide__content">
+        <span class="slide__num">28</span>
+        <h2 class="slide__kicker slide__kicker--warn">AVANT GIT ADD, REGARDE OU TU ES</h2>
+        <div class="code-block">
+          <code>pwd</code>
+          <button class="copy-btn" data-copy="pwd" aria-label="Copier">COPY</button>
+        </div>
+        <div class="code-block">
+          <code>ls</code>
+          <button class="copy-btn" data-copy="ls" aria-label="Copier">COPY</button>
+        </div>
+        <div class="check-pair">
+          <div class="check-good">
+            <span class="check-label">SI TU VOIS</span>
+            <code>index.html &nbsp; style.css &nbsp; script.js</code>
+            <span class="check-verdict check-verdict--ok">TU ES DANS LE BON DOSSIER</span>
+          </div>
+          <div class="check-bad">
+            <span class="check-label">SI TU VOIS</span>
+            <code>Documents/ &nbsp; Downloads/ &nbsp; Desktop/</code>
+            <span class="check-verdict check-verdict--stop">STOP</span>
+          </div>
+        </div>
+        <p class="text-muted">Si tu fais <span class="mono">git add .</span> dans le mauvais dossier, tu risques de versionner tout ton disque dur.</p>
+      </div>
+    </section>
+
+    <!-- 29 — GIT EN UNE IMAGE -->
+    <section class="slide slide--dark" data-slide="29">
+      <div class="slide__content">
+        <span class="slide__num">29</span>
+        <h2 class="slide__kicker">GIT EN UNE IMAGE</h2>
+        <div class="full-pipeline">
+          <div class="fp-stage">
+            <div class="fp-box">
+              <span>TON PROJET</span>
+              <span class="muted">index.html</span>
+              <span class="muted">style.css</span>
+            </div>
+            <span class="fp-cmd">git init</span>
+          </div>
+          <div class="fp-arrow">→</div>
+          <div class="fp-stage">
+            <div class="fp-box">
+              <span>REPOSITORY LOCAL</span>
+            </div>
+            <span class="fp-cmd">git add</span>
+          </div>
+          <div class="fp-arrow">→</div>
+          <div class="fp-stage">
+            <div class="fp-box fp-box--staged">
+              <span>STAGING AREA</span>
+            </div>
+            <span class="fp-cmd">git commit</span>
+          </div>
+          <div class="fp-arrow">→</div>
+          <div class="fp-stage">
+            <div class="fp-box">
+              <span>HISTORY</span>
+            </div>
+            <span class="fp-cmd">git push</span>
+          </div>
+          <div class="fp-arrow">→</div>
+          <div class="fp-stage">
+            <div class="fp-box fp-box--remote">
+              <span>GITHUB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 30 — CHALLENGE -->
+    <section class="slide slide--light" data-slide="30">
+      <div class="slide__content">
+        <span class="slide__num">30</span>
+        <h2 class="slide__kicker">CHALLENGE</h2>
+        <p class="text-lg">Crée un projet HTML simple et publie-le sur GitHub.</p>
+        <div class="checklist">
+          <label class="checklist__item"><input type="checkbox"><span>Créer le dossier <span class="mono">mon-site</span></span></label>
+          <label class="checklist__item"><input type="checkbox"><span>Créer <span class="mono">index.html</span></span></label>
+          <label class="checklist__item"><input type="checkbox"><span>Installer Git</span></label>
+          <label class="checklist__item"><input type="checkbox"><span>Configurer Git</span></label>
+          <label class="checklist__item"><input type="checkbox"><span><span class="mono">git init</span></span></label>
+          <label class="checklist__item"><input type="checkbox"><span><span class="mono">git status</span></span></label>
+          <label class="checklist__item"><input type="checkbox"><span><span class="mono">git add .</span></span></label>
+          <label class="checklist__item"><input type="checkbox"><span><span class="mono">git commit -m "Initial commit"</span></span></label>
+          <label class="checklist__item"><input type="checkbox"><span>Créer un repository GitHub</span></label>
+          <label class="checklist__item"><input type="checkbox"><span>Connecter <span class="mono">origin</span></span></label>
+          <label class="checklist__item"><input type="checkbox"><span><span class="mono">git push -u origin main</span></span></label>
+          <label class="checklist__item"><input type="checkbox"><span>Modifier <span class="mono">index.html</span></span></label>
+          <label class="checklist__item"><input type="checkbox"><span><span class="mono">git add .</span></span></label>
+          <label class="checklist__item"><input type="checkbox"><span><span class="mono">git commit -m "Update"</span></span></label>
+          <label class="checklist__item"><input type="checkbox"><span><span class="mono">git push</span></span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 31 — RÉCAPITULATIF -->
+    <section class="slide slide--dark" data-slide="31">
+      <div class="slide__content">
+        <span class="slide__num">31</span>
+        <h2 class="slide__kicker">RÉCAPITULATIF</h2>
+        <div class="recap-table">
+          <div class="recap-row">
+            <code class="recap-cmd">git init</code>
+            <span class="recap-desc">Initialise un repository Git local</span>
+          </div>
+          <div class="recap-row">
+            <code class="recap-cmd">git status</code>
+            <span class="recap-desc">Montre l'état actuel du repository</span>
+          </div>
+          <div class="recap-row">
+            <code class="recap-cmd">git add .</code>
+            <span class="recap-desc">Prépare les modifications pour le prochain commit</span>
+          </div>
+          <div class="recap-row">
+            <code class="recap-cmd">git commit -m "..."</code>
+            <span class="recap-desc">Enregistre une version dans l'historique</span>
+          </div>
+          <div class="recap-row">
+            <code class="recap-cmd">git remote add origin URL</code>
+            <span class="recap-desc">Connecte le repository local à GitHub</span>
+          </div>
+          <div class="recap-row">
+            <code class="recap-cmd">git push -u origin main</code>
+            <span class="recap-desc">Envoie les commits vers GitHub</span>
+          </div>
+          <div class="recap-row">
+            <code class="recap-cmd">git pull</code>
+            <span class="recap-desc">Récupère les modifications distantes</span>
+          </div>
+          <div class="recap-row">
+            <code class="recap-cmd">git clone URL</code>
+            <span class="recap-desc">Copie un repository distant sur l'ordinateur</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 32 — CONCLUSION -->
+    <section class="slide slide--light slide--conclusion" data-slide="32">
+      <div class="slide__content slide__content--conclusion">
+        <div class="conclusion">
+          <span class="conclusion__line">WRITE CODE.</span>
+          <span class="conclusion__line">VERSION IT.</span>
+          <span class="conclusion__line">SHIP IT.</span>
+          <span class="conclusion__line">PUBLISH IT.</span>
+        </div>
+        <div class="conclusion__separator"></div>
+        <p class="conclusion__flow">Git → GitHub</p>
+        <p class="conclusion__msg">Tu n'as pas besoin de tout mémoriser. Tu dois comprendre le workflow.</p>
+        <div class="cover__credit" style="margin-top:2.5rem;">
+          <span class="cover__credit-name">Stéphane Favide</span>
+          <span class="cover__credit-sep">—</span>
+          <span class="cover__credit-role">Product Builder</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="nav" aria-label="Navigation des slides">
+    <span class="nav__credit" aria-label="Realise par Stephane Favide">
+      <span class="nav__credit-name">S. Favide</span>
+      <span class="nav__credit-sep">—</span>
+      <span class="nav__credit-role">Product Builder</span>
+    </span>
+    <button class="nav__btn nav__btn--prev" aria-label="Slide precedente" disabled>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>PREV</span>
+    </button>
+    <div class="nav__progress">
+      <span class="nav__current">01</span>
+      <span class="nav__divider">/</span>
+      <span class="nav__total">32</span>
+    </div>
+    <button class="nav__btn nav__btn--next" aria-label="Slide suivante">
+      <span>NEXT</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
